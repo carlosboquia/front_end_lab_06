@@ -3,7 +3,7 @@
  * Uses a short delay to ensure the transition is triggered.
  */
 function showTopBanner() {
-    var banner = document.getElementById("top-banner");
+    let banner = document.getElementById("top-banner");
     banner.classList.remove("hide");
     setTimeout(function () {
         banner.classList.add("show");
@@ -29,6 +29,7 @@ function showModal() {
  */
 function closeModal() {
     document.getElementById("modal").classList.add("hide");
+    localStorage.setItem("modalClosed", "true");
 }
 
 /**
@@ -36,6 +37,8 @@ function closeModal() {
  */
 function closeTopBanner() {
     document.getElementById("top-banner").classList.add("hide");
+    sessionStorage.setItem("topBannerClosed", "true");
+    console.log(sessionStorage.getItem("topBannerClosed"));
 }
 
 /**
@@ -43,6 +46,8 @@ function closeTopBanner() {
  */
 function closeFooterBanner() {
     document.getElementById("footer-banner").classList.add("hide");
+    document.cookie = "closeFooterBanner=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/";
+    console.log(document.cookie);
 }
 
 // Event listeners to close the modal, top banner, and footer banner when 'x' is clicked
